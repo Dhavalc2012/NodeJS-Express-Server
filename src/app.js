@@ -7,8 +7,10 @@ var app = express();
 /* Req is Request and res is Response*/
 
 //debugger;
+app.set('view engine','jade');
+app.set('views', __dirname + '/templates');
 app.get('/',function(req,res){
-	res.send("Hello World Again");
+	res.render('index');
 });
 
 app.get('/blog/:title?',function(req, res){
