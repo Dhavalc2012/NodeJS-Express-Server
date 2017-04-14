@@ -20,8 +20,8 @@ app.get('/blog/:title?',function(req, res){
 			res.send("This page is under construction");
 	}
 	else {
-			var post = posts[title];
-			res.send(post);
+			var post = posts[title] || {};
+			res.render('post',{post : post});
 	}
 });
 app.listen(3000, function(){
