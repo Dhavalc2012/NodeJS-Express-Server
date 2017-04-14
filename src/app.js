@@ -7,6 +7,7 @@ var app = express();
 /* Req is Request and res is Response*/
 
 //debugger;
+app.use('/static',express.static(__dirname + '/public'));
 app.set('view engine','jade');
 app.set('views', __dirname + '/templates');
 app.get('/',function(req,res){
