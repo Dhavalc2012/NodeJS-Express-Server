@@ -3,6 +3,11 @@
 var express = require('express'),
 	posts = require('./mock/posts.json');
 
+var	postsLists = Object.keys(posts).map(
+		function(value) {
+		return posts[value];
+	});
+	
 var app = express();
 /* Req is Request and res is Response*/
 
@@ -18,7 +23,8 @@ app.get('/blog/:title?',function(req, res){
 	var title = req.params.title;
 	if (title === undefined) {
 			res.status(503);
-			res.send("This page is under construction");
+			//res.send("This page is under construction");
+			res.render('blog',{posts : postsLists});
 	}
 	else {
 			var post = posts[title] || {};
